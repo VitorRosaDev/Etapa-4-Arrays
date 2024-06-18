@@ -1,4 +1,3 @@
-
 public class Alimentacao extends Loja {
 
     private Data dataAlvara;

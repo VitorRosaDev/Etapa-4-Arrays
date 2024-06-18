@@ -1,4 +1,3 @@
-
 public class Data {
 
     private int dia;
@@ -47,18 +46,18 @@ public class Data {
     }
 
     public boolean validarData(int dia, int mes, int ano) {
-        if (ano < 0 || mes < 1 || mes > 12 || dia < 1 || dia > diasNoMes(mes, ano)) {
+        if ((ano < 0) || (mes < 1 || mes > 12) || (dia < 1 || dia > diasNoMes(mes, ano))) {
             return false;
         }
         return true;
     }
 
     public boolean verificaAnoBissexto() {
-        return (ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0;
+        return (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
     }
     
     public int diasNoMes(int mes, int ano) {
-        int[] diasPorMes = {0, 31, verificaAnoBissexto() ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int[] diasPorMes = {0, 31, (verificaAnoBissexto() ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         return diasPorMes[mes];
     }
 }

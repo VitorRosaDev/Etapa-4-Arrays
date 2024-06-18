@@ -4,7 +4,7 @@ public class Principal {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+       Scanner scanner = new Scanner(System.in); 
         boolean sair = false;
 
         while (!sair) {

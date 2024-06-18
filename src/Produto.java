@@ -49,7 +49,7 @@ public class Produto {
     int mesAtual = dataAtual.getMes();
     int anoAtual = dataAtual.getAno();
 
-    if (anoValidade < anoAtual || (anoValidade == anoAtual && mesValidade < mesAtual)
+    if ((anoValidade < anoAtual) || (anoValidade == anoAtual && mesValidade < mesAtual)
       || (anoValidade == anoAtual && mesValidade == mesAtual && diaValidade < diaAtual)) {
        
       return true;

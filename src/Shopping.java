@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Shopping {
 
     private String nome;
@@ -36,55 +34,55 @@ public class Shopping {
         this.lojas = lojas;
     }
 
-    @Override
     public String toString() {
         return "Nome do Shopping: " + nome +
-        "\nEndereco do Shopping: " + endereco +
-        ", lojas=" + Arrays.toString(lojas);
+                "\nEndereco do Shopping: " + endereco +
+                "\nQuantidade de Lojas: " + this.lojas.length + "lojas.";
     }
 
     public boolean insereLoja(Loja loja) {
         for (int i = 0; i < lojas.length; i++) {
-          if (lojas[i] == null) {
-            lojas[i] = loja;
-            return true;
-          }
+            if (this.lojas[i] == null) {
+                lojas[i] = loja;
+                return true;
+            }
         }
-        
-        return false; // Não há espaço disponível para lojas
+
+        return false;
     }
 
     public boolean removeLoja(String nomeLoja) {
         for (int i = 0; i < lojas.length; i++) {
-          if (lojas[i] != null && lojas[i].getNome().equals(nomeLoja)) {
-            lojas[i] = null;
-            return true;
-          }
+            if (lojas[i] != null && lojas[i].getNome().equalsIgnoreCase(nomeLoja)) {
+                lojas[i] = null;
+                return true;
+            }
         }
-    
-        return false; // Produto não encontrado no estoque
+
+        return false;
     }
 
     public int quantidadeLojasPorTipo(String tipo) {
         int quantidade = 0;
 
-        // Verifica o tipo e conta quantas lojas desse tipo existem
-        for (Loja loja : lojas) {
-            if (loja != null && loja instanceof Cosmetico && tipo.equals("Cosmético")) {
-                quantidade++;
-            } else if (loja != null && loja instanceof Vestuario && tipo.equals("Vestuário")) {
-                quantidade++;
-            } else if (loja != null && loja instanceof Bijuteria && tipo.equals("Bijuteria")) {
-                quantidade++;
-            } else if (loja != null && loja instanceof Alimentacao && tipo.equals("Alimentação")) {
-                quantidade++;
-            } else if (loja != null && loja instanceof Informatica && tipo.equals("Informática")) {
-                quantidade++;
+        for (int i = 0; i < lojas.length; i++) {
+            Loja loja = lojas[i];
+            if (loja != null) {
+                if (loja instanceof Cosmetico && tipo.equalsIgnoreCase("Cosmético")) {
+                    quantidade++;
+                } else if (loja instanceof Vestuario && tipo.equalsIgnoreCase("Vestuário")) {
+                    quantidade++;
+                } else if (loja instanceof Bijuteria && tipo.equalsIgnoreCase("Bijuteria")) {
+                    quantidade++;
+                } else if (loja instanceof Alimentacao && tipo.equalsIgnoreCase("Alimentação")) {
+                    quantidade++;
+                } else if (loja instanceof Informatica && tipo.equalsIgnoreCase("Informática")) {
+                    quantidade++;
+                }
             }
         }
 
         if (quantidade == 0) {
-            // Retorna -1 se não houver lojas do tipo especificado
             return -1;
         } else {
             return quantidade;
@@ -95,9 +93,12 @@ public class Shopping {
         Informatica lojaMaisCara = null;
         double valorMaisAlto = 0.0;
 
-        for (Loja loja : lojas) {
+        for (int i = 0; i < lojas.length; i++) {
+            Loja loja = lojas[i];
+
             if (loja instanceof Informatica) {
                 Informatica informatica = (Informatica) loja;
+
                 if (informatica.getSeguroEletronicos() > valorMaisAlto) {
                     valorMaisAlto = informatica.getSeguroEletronicos();
                     lojaMaisCara = informatica;
